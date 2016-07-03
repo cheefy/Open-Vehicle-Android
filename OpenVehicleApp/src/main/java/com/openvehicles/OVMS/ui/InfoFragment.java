@@ -409,14 +409,14 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		}
 
 		textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff);
+		textView.setVisibility(View.INVISIBLE);
 		textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff2);
+		textView.setVisibility(View.INVISIBLE);
 		if (textView != null) {
 					textView.setText(infoEtr);
 					if (!infoEtr.equals("")) {
 							etrVisible = true;
 							textView.setVisibility(View.VISIBLE);
-						} else {
-							textView.setVisibility(View.INVISIBLE);
 						}
 				}
 
@@ -428,7 +428,7 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 								if (infoEtr.length() < 1)
 										{//Use the center TV and hide the left one
 													textView.setVisibility(View.INVISIBLE);
-									textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff2);
+													textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff2);
 									}
 					infoEtr = infoEtrRange;
 				}

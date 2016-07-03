@@ -70,12 +70,12 @@ public class BatteryFragment
 	private static final int COLOR_SOC_TEXT = Color.parseColor("#AAAAFF");
 	private static final int COLOR_SOC_GRID = Color.parseColor("#7777AA");
 
-	private static final int COLOR_VOLT = Color.parseColor("#CCFF33");
-	private static final int COLOR_VOLT_MIN = Color.parseColor("#77AA00");
-	private static final int COLOR_VOLT_GRID = Color.parseColor("#77AA77");
+	private static final int COLOR_VOLT = Color.parseColor("#60DB27");
+	private static final int COLOR_VOLT_MIN = Color.parseColor("#3FB00B");
+	private static final int COLOR_VOLT_GRID = Color.parseColor("#99BA8A");
 
-	private static final int COLOR_TEMP = Color.parseColor("#FFEE33");
-	private static final int COLOR_TEMP_GRID = Color.parseColor("#AAAA77");
+	private static final int COLOR_TEMP = Color.parseColor("#DB7E2C");
+	private static final int COLOR_TEMP_GRID = Color.parseColor("#DBBEA4");
 
 
 	// data storage:
@@ -144,12 +144,12 @@ public class BatteryFragment
 
 		cellChart = (CandleStickChart) rootView.findViewById(R.id.chart_cells);
 		cellChart.setDescription(getString(R.string.battery_cell_description));
-		cellChart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.LTGRAY);
+		cellChart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.DKGRAY);
 		cellChart.setDrawGridBackground(false);
 		cellChart.setDrawBorders(true);
 
 		xAxis = cellChart.getXAxis();
-		xAxis.setTextColor(Color.WHITE);
+		xAxis.setTextColor(Color.BLACK);
 
 		yAxis = cellChart.getAxisLeft();
 		yAxis.setTextColor(COLOR_VOLT);
@@ -179,7 +179,7 @@ public class BatteryFragment
 
 		packChart = (LineChart) rootView.findViewById(R.id.chart_pack);
 		packChart.setDescription(getString(R.string.battery_pack_description));
-		packChart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.LTGRAY);
+		packChart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.DKGRAY);
 		packChart.setDrawGridBackground(false);
 		packChart.setDrawBorders(true);
 		packChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
@@ -203,7 +203,7 @@ public class BatteryFragment
 		});
 
 		xAxis = packChart.getXAxis();
-		xAxis.setTextColor(Color.WHITE);
+		xAxis.setTextColor(Color.BLACK);
 
 		yAxis = packChart.getAxisLeft();
 		yAxis.setSpaceTop(5f);
@@ -601,7 +601,7 @@ public class BatteryFragment
 
 		LineData data;
 		packData = data = new LineData(xValues, dataSets);
-		data.setValueTextColor(Color.WHITE);
+		data.setValueTextColor(Color.BLACK);
 		data.setValueTextSize(9f);
 
 		packChart.setData(data);
@@ -612,7 +612,7 @@ public class BatteryFragment
 			xAxis.addLimitLine(xSections.get(i));
 		}
 
-		packChart.getLegend().setTextColor(Color.WHITE);
+		packChart.getLegend().setTextColor(Color.BLACK);
 
 		packChart.invalidate();
 
@@ -799,11 +799,11 @@ public class BatteryFragment
 		// display data sets:
 
 		CandleData data = new CandleData(xValues, dataSets);
-		data.setValueTextColor(Color.WHITE);
+		data.setValueTextColor(Color.BLACK);
 		data.setValueTextSize(9f);
 
 		cellChart.setData(data);
-		cellChart.getLegend().setTextColor(Color.WHITE);
+		cellChart.getLegend().setTextColor(Color.BLACK);
 		cellChart.invalidate();
 
 	}

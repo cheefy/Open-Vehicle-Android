@@ -194,10 +194,10 @@
     <string name="pushnotifications">Push Notifications</string>
     <string name="pushnotifications_welcome">Push notifications received for your registered vehicles are archived here.</string>
 
-    <string formatted="false" name="state_charging">CHARGING\n%s %s</string>
-    <string formatted="false" name="state_topping_off">TOPPING OFF\n%s %s</string>
-    <string formatted="false" name="state_done">DONE\n%s %s</string>
-    <string formatted="false" name="state_stopped">STOPPED\n%s %s</string>
+    <string formatted="false" name="state_charging">CHARGING - %s %s</string>
+    <string formatted="false" name="state_topping_off">TOPPING OFF - %s %s</string>
+    <string formatted="false" name="state_done">DONE - %s %s</string>
+    <string formatted="false" name="state_stopped">STOPPED - %s %s</string>
 
     <string formatted="false" name="info_etr_full">100%%: ~%s</string>
     <string formatted="false" name="info_etr_suffsoc">%d%%: ~%s</string>
@@ -445,6 +445,9 @@
         efficiency(charger+battery)</i>. Combined charging efficiency will normally be
         ~92%.</p>
     ]]></string>
-
-
+    <string name="pushtocharge">PUSH TO CHARGE</string>
+    <string name="range">Range Prediction:</string>
+    <string name="range_estimated">ESTIMATED</string>
+    <string name="range_ideal">IDEAL</string>
+    <string name="current_trip">Current trip: %s</string>
 </resources>

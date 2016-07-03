@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:drawablePadding="4dp"
-        android:drawableLeft="@drawable/ic_parking"
+        android:drawableLeft="@drawable/ic_parking_grey"
         android:textAppearance="?android:textAppearanceSmall"
         android:gravity="center_vertical"
-        android:textColor="#FFF" />
+        android:textColor="#555" />
     
     <ImageView
         android:id="@+id/img_car_connection"

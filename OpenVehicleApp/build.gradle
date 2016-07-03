@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -37,8 +36,11 @@ dependencies {
     //compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
     compile files('libs/mpandroidchart-2.2.3.jar')
     compile 'com.androidmapsextensions:android-maps-extensions:2.2.0'
-    compile 'com.android.support:support-v4:23.0.+'
-    compile 'com.android.support:appcompat-v7:23.0.+'
-    compile 'com.google.android.gms:play-services-maps:8.1.0'
-    compile 'com.google.android.gms:play-services-gcm:8.1.0'
+    compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.google.android.gms:play-services-maps:8.4.0'
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
 }
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="ltgrey">#ffdddede</color>
+    <color name="mdgrey">#ffcccdcd</color>
+    <color name="dkgrey">#ff333333</color>
+    <color name="ltblue">#ff1797da</color>
+    <color name="dkblue">#ff116fa0</color>
+
     <color name="colorPrimary">#1C1C54</color>
     <color name="colorPrimaryDark">#020245</color>
     <color name="colorAccent">#359900</color>
-    <color name="colorBackgroundDark">#000000</color>
-    <color name="colorText">#ffffff</color>
+    <color name="colorBackgroundDark">#fffef6</color>
+    <color name="colorText">#222222</color>
     <color name="black">#000000</color>
-    <color name="colorBackground">#000000</color>
-    <color name="colorForeground">#fffef6</color>
-</resources>
+    <color name="colorBackground">#fffef6</color>
+    <color name="colorForeground">#555555</color>
+</resources> 

@@ -192,10 +192,10 @@
     <string name="pushnotifications">Push Notifications</string>
     <string name="pushnotifications_welcome">Las notificaciones "push" recibidas por sus vehículos registrados se almacenan aquí.</string>
 
-    <string formatted="false" name="state_charging">CARGANDO\n%s %s</string>
-    <string formatted="false" name="state_topping_off">LLENANDO\n%s %s</string>
-    <string formatted="false" name="state_done">FINALIZADO\n%s %s</string>
-    <string formatted="false" name="state_stopped">PARADO\n%s %s</string>
+    <string formatted="false" name="state_charging">CARGANDO - %s %s</string>
+    <string formatted="false" name="state_topping_off">LLENANDO - %s %s</string>
+    <string formatted="false" name="state_done">FINALIZADO - %s %s</string>
+    <string formatted="false" name="state_stopped">PARADO - %s %s</string>
 
     <string formatted="false" name="info_etr_full">100%%: ~%s</string>
     <string formatted="false" name="info_etr_suffsoc">%d%%: ~%s</string>

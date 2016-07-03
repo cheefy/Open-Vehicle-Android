@@ -4,7 +4,7 @@
 
     <item android:id="@+id/power_menu"
           app:showAsAction="ifRoom|withText"
-          android:icon="@android:drawable/ic_menu_more"
+          android:icon="@drawable/ic_action_more_vert"
           android:title="@string/power_menu">
 
         <menu>
@@ -12,21 +12,21 @@
             <item android:id="@+id/mi_get_data"
               app:showAsAction="ifRoom"
               android:title="@string/power_btn_get_data"
-              android:icon="@android:drawable/stat_sys_download" />
+              android:icon="@drawable/ic_action_file_download" />
 
             <item android:id="@+id/mi_power_zoom5"
                   app:showAsAction="ifRoom"
-                  android:icon="@android:drawable/ic_menu_zoom"
+                  android:icon="@drawable/ic_action_loupe"
                   android:title="@string/power_btn_zoom5"/>
 
             <item android:id="@+id/mi_power_zoom10"
                   app:showAsAction="ifRoom"
-                  android:icon="@android:drawable/ic_menu_zoom"
+                  android:icon="@drawable/ic_action_loupe"
                   android:title="@string/power_btn_zoom10"/>
 
             <item android:id="@+id/mi_reset_view"
                   app:showAsAction="ifRoom"
-                  android:icon="@android:drawable/ic_menu_mylocation"
+                  android:icon="@drawable/ic_action_location"
                   android:title="@string/power_btn_reset_view"/>
 
             <group android:checkableBehavior="all">
@@ -43,7 +43,7 @@
 
             <item android:id="@+id/mi_help"
                   app:showAsAction="never"
-                  android:icon="@android:drawable/ic_menu_help"
+                  android:icon="@drawable/ic_action_about"
                   android:title="@string/power_btn_help"/>
 
         </menu>

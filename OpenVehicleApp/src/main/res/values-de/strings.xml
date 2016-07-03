@@ -193,10 +193,10 @@
     <string name="pushnotifications">Push-Benachrichtigungen</string>
     <string name="pushnotifications_welcome">Erhaltene Push-Nachrichten für deine registrierten Fahrzeuge werden hier archiviert.</string>
 
-    <string formatted="false" name="state_charging">LADEN\n%s %s</string>
-    <string formatted="false" name="state_topping_off">LADUNG ABSCHLIESSEN\n%s %s</string>
-    <string formatted="false" name="state_done">LADUNG BEENDET\n%s %s</string>
-    <string formatted="false" name="state_stopped">LADUNGSABBRUCH\n%s %s</string>
+    <string formatted="false" name="state_charging">LADEN - %s %s</string>
+    <string formatted="false" name="state_topping_off">LADUNG ABSCHLIESSEN - %s %s</string>
+    <string formatted="false" name="state_done">LADUNG BEENDET - %s %s</string>
+    <string formatted="false" name="state_stopped">LADUNGSABBRUCH - %s %s</string>
 
     <string formatted="false" name="info_etr_full">100%%: ~%s</string>
     <string formatted="false" name="info_etr_suffsoc">%d%%: ~%s</string>
@@ -434,5 +434,9 @@
         kombinierte Wirkungsgrad hier bei ~92%.</p>
     ]]></string>
 
-
+    <string name="pushtocharge">Drücken zum Laden</string>
+       <string name="range">Reichweitenvorhersage:</string>
+       <string name="range_estimated">GESCHÄTZT</string>
+       <string name="range_ideal">IDEAL</string>
+       <string name="current_trip">Aktuelle Fahrt: %s</string>
 </resources>

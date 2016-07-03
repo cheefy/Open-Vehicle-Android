@@ -358,15 +358,15 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 
 		if (pCarData.car_lastupdated == null) {
 			tv.setText("");
-			tv.setTextColor(0xFFFFFFFF);
+			tv.setTextColor(0xFF333333);
 		}
 		else if (minutes == 0) {
 			tv.setText(getText(R.string.live));
-			tv.setTextColor(0xFFFFFFFF);
+			tv.setTextColor(0xFF333333);
 		}
 		else if (minutes == 1) {
 			tv.setText(getText(R.string.min1));
-			tv.setTextColor(0xFFFFFFFF);
+			tv.setTextColor(0xFF333333);
 		}
 		else if (days > 1) {
 			tv.setText(String.format(getText(R.string.ndays).toString(),days));
@@ -382,7 +382,7 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 		}
 		else {
 			tv.setText(String.format(getText(R.string.nmins).toString(),minutes));
-			tv.setTextColor(0xFFFFFFFF);
+			tv.setTextColor(0xFF333333);
 		}
 
 		// Then the parking timer...
@@ -417,7 +417,7 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 
 		// The signal strength indicator
 		ImageView iv = (ImageView)findViewById(R.id.img_signal_rssi);
-		iv.setImageResource(Ui.getDrawableIdentifier(getActivity(), "signal_strength_" + pCarData.car_gsm_bars));
+		iv.setImageResource(Ui.getDrawableIdentifier(getActivity(), "ic_signal_" + pCarData.car_gsm_bars));
 	}
 	
 	// This updates the main informational part of the view.
@@ -451,7 +451,7 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 				else if (diff >= 1.0)
 					tv.setTextColor(0xFFFF6600);
 				else
-					tv.setTextColor(0xFFFFFFFF);
+					tv.setTextColor(0xFF333333);
 			}
 
 		} else {
@@ -467,7 +467,7 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 				tv.setTextColor(0xFF808080);
 			} else {
 				tv.setText(pCarData.car_temp_ambient);
-				tv.setTextColor(0xFFFFFFFF);
+				tv.setTextColor(0xFF333333);
 			}
 		}
 
@@ -523,15 +523,15 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
     			rrtvv.setTextColor(0xFF808080);
     			
     		} else {
-    			fltv.setTextColor(0xFFFFFFFF);
-    			frtv.setTextColor(0xFFFFFFFF);
-    			rltv.setTextColor(0xFFFFFFFF);
-    			rrtv.setTextColor(0xFFFFFFFF);
+    			fltv.setTextColor(0xFF333333);
+    			frtv.setTextColor(0xFF333333);
+    			rltv.setTextColor(0xFF333333);
+    			rrtv.setTextColor(0xFF333333);
 
-    			fltvv.setTextColor(0xFFFFFFFF);
-    			frtvv.setTextColor(0xFFFFFFFF);
-    			rltvv.setTextColor(0xFFFFFFFF);
-    			rrtvv.setTextColor(0xFFFFFFFF);
+    			fltvv.setTextColor(0xFF333333);
+    			frtvv.setTextColor(0xFF333333);
+    			rltvv.setTextColor(0xFF333333);
+    			rrtvv.setTextColor(0xFF333333);
     		}
         }
 
@@ -556,10 +556,10 @@ public class CarFragment extends BaseFragment implements OnClickListener, OnResu
 				batterytv.setTextColor(0xFF808080);
 				chargertv.setTextColor(0xFF808080);
 			} else {
-				pemtv.setTextColor(0xFFFFFFFF);
-				motortv.setTextColor(0xFFFFFFFF);
-				batterytv.setTextColor(0xFFFFFFFF);
-				chargertv.setTextColor(0xFFFFFFFF);
+				pemtv.setTextColor(0xFF333333);
+				motortv.setTextColor(0xFF333333);
+				batterytv.setTextColor(0xFF333333);
+				chargertv.setTextColor(0xFF333333);
 			}
 		}
 

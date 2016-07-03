@@ -1,5 +1,6 @@
 package com.openvehicles.OVMS.ui;
 
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialog;
 import android.content.DialogInterface;
@@ -22,7 +23,8 @@ import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import com.openvehicles.OVMS.R;
 import com.openvehicles.OVMS.api.OnResultCommandListener;
 import com.openvehicles.OVMS.entities.CarData;
@@ -176,7 +178,16 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 					boolean fromUser) {
 			}
 		});
-
+		Switch sw = (Switch)findViewById(R.id.tabInfoSwitchChargerControl);
+			sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+					@Override
+					public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+							if(b)
+									startCharge();
+							else
+								stopCharge();
+						}
+				});
 	}
 
 	@Override
@@ -383,15 +394,11 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		int suffRange = mCarData.car_chargelimit_rangelimit_raw;
 		int etrSuffRange = mCarData.car_chargelimit_minsremaining_range;
 
+		/*
+		Moved 20 lines further
 		if (etrSuffRange > 0) {
-			String infoEtrRange = getString(R.string.info_etr_suffrange,
-					suffRange, mCarData.car_distance_units,
-					String.format("%02d:%02d", etrSuffRange / 60, etrSuffRange % 60));
-			if (infoEtr.length() > 0)
-				infoEtr += "\n";
-			infoEtr += infoEtrRange;
-		}
 
+*/
 		if (etrSuffSOC > 0) {
 			String infoEtrSOC = getString(R.string.info_etr_suffsoc,
 					suffSOC,
@@ -402,6 +409,33 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		}
 
 		textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff);
+		textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff2);
+		if (textView != null) {
+					textView.setText(infoEtr);
+					if (!infoEtr.equals("")) {
+							etrVisible = true;
+							textView.setVisibility(View.VISIBLE);
+						} else {
+							textView.setVisibility(View.INVISIBLE);
+						}
+				}
+
+						if (etrSuffRange > 0) {
+					String infoEtrRange = getString(R.string.info_etr_suffrange,
+									suffRange, mCarData.car_distance_units,
+									String.format("%02d:%02d", etrSuffRange / 60, etrSuffRange % 60));
+							textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff);
+								if (infoEtr.length() < 1)
+										{//Use the center TV and hide the left one
+													textView.setVisibility(View.INVISIBLE);
+									textView = (TextView) findViewById(R.id.tabInfoTextChargeEtrSuff2);
+									}
+					infoEtr = infoEtrRange;
+				}
+
+
+
+
 		if (textView != null) {
 			textView.setText(infoEtr);
 			if (!infoEtr.equals("")) {
@@ -521,6 +555,9 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		ImageView iv = (ImageView) findViewById(R.id.img_signal_rssi);
 		iv.setImageResource(Ui.getDrawableIdentifier(getActivity(),
 				"signal_strength_" + pCarData.car_gsm_bars));
+
+			tv = (TextView)findViewById(R.id.txt_odometer);
+			tv.setText("ODO: "+pCarData.car_odometer);
 	}
 
 	// This updates the main informational part of the view.
@@ -535,9 +572,11 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		TextView cmtv = (TextView) findViewById(R.id.tabInfoTextChargeMode);
 		ImageView coiv = (ImageView) findViewById(R.id.tabInfoImageBatteryChargingOverlay);
 		ReversedSeekBar bar = (ReversedSeekBar) findViewById(R.id.tabInfoSliderChargerControl);
-		TextView tvl = (TextView) findViewById(R.id.tabInfoTextChargeStatusLeft);
-		TextView tvr = (TextView) findViewById(R.id.tabInfoTextChargeStatusRight);
+		//TextView tvl = (TextView) findViewById(R.id.tabInfoTextChargeStatusLeft);
+		//TextView tvr = (TextView) findViewById(R.id.tabInfoTextChargeStatusRight);
+		Switch sw = (Switch)findViewById(R.id.tabInfoSwitchChargerControl);
 		TextView tvf = (TextView) findViewById(R.id.tabInfoTextChargeStatus);
+		TextView tvt = (TextView) findViewById(R.id.tabInfoTextTrip);
 
 		if ((!pCarData.car_chargeport_open)
 				|| (pCarData.car_charge_substate_i_raw == 0x07)) {
@@ -546,10 +585,11 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 
 			findViewById(R.id.tabInfoImageCharger).setVisibility(View.INVISIBLE);
 			bar.setVisibility(View.INVISIBLE);
+			sw.setVisibility(View.INVISIBLE);
 			cmtv.setVisibility(View.INVISIBLE);
 			coiv.setVisibility(View.INVISIBLE);
-			tvl.setVisibility(View.INVISIBLE);
-			tvr.setVisibility(View.INVISIBLE);
+			//tvl.setVisibility(View.INVISIBLE);
+			//tvr.setVisibility(View.INVISIBLE);
 			tvf.setVisibility(View.INVISIBLE);
 
 		} else {
@@ -560,18 +600,24 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 				// Renault Twizy: no charge control
 
 				findViewById(R.id.tabInfoImageCharger).setVisibility(View.VISIBLE);
-
+				findViewById(R.id.tabInfoImageCharger_active).setVisibility(View.INVISIBLE);
 				bar.setVisibility(View.INVISIBLE);
-				tvl.setVisibility(View.INVISIBLE);
-				tvr.setVisibility(View.INVISIBLE);
+				sw.setVisibility(View.INVISIBLE);
+				tvf.setVisibility(View.INVISIBLE);
 
 				int chargeStateInfo = 0;
 				switch (pCarData.car_charge_state_i_raw) {
 					case 1: // Charging
 						chargeStateInfo = R.string.state_charging;
+						findViewById(R.id.tabInfoImageCharger).setVisibility(View.INVISIBLE);
+						findViewById(R.id.tabInfoImageCharger_active).setVisibility(View.VISIBLE);
+
 						break;
 					case 2: // Topping off
 						chargeStateInfo = R.string.state_topping_off;
+						findViewById(R.id.tabInfoImageCharger).setVisibility(View.INVISIBLE);
+						findViewById(R.id.tabInfoImageCharger_active).setVisibility(View.VISIBLE);
+
 						break;
 					case 4: // Done
 						chargeStateInfo = R.string.state_done;
@@ -589,7 +635,7 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 					tvf.setVisibility(View.VISIBLE);
 				}
 
-				coiv.setVisibility(View.VISIBLE);
+				//coiv.setVisibility(View.VISIBLE);
 				cmtv.setText(String.format("%s %s", pCarData.car_charge_mode,
 						pCarData.car_charge_current).toUpperCase());
 				cmtv.setVisibility(View.VISIBLE);
@@ -599,9 +645,10 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 				// Standard car:
 
 				findViewById(R.id.tabInfoImageCharger).setVisibility(View.VISIBLE);
-				bar.setVisibility(View.VISIBLE);
-				tvl.setVisibility(View.VISIBLE);
-				tvr.setVisibility(View.VISIBLE);
+				//bar.setVisibility(View.VISIBLE);
+				sw.setVisibility(View.VISIBLE);
+				tvf.setVisibility(View.VISIBLE);
+				//tvr.setVisibility(View.VISIBLE);
 
 				switch (pCarData.car_charge_state_i_raw) {
 					case 0x04: // Done
@@ -613,17 +660,19 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 					case 0x19: // Stopped
 						// Slider on the left, message is "Slide to charge"
 						bar.setProgress(100);
-						tvl.setText(null);
-						tvr.setText(getText(R.string.slidetocharge));
+						sw.setChecked(false);
+						tvf.setText(getText(R.string.pushtocharge));
+						//tvl.setText(getText(R.string.slidetocharge));
 						coiv.setVisibility(View.VISIBLE);
 						cmtv.setVisibility(View.INVISIBLE);
 						break;
 					case 0x0e: // Wait for schedule charge
 						// Slider on the left, message is "Timed Charge"
 						bar.setProgress(100);
-						tvl.setText(null);
-						tvr.setText(getText(R.string.timedcharge));
-						coiv.setVisibility(View.VISIBLE);
+						sw.setChecked(false);
+						//tvl.setText(null);
+						tvf.setText(getText(R.string.timedcharge));
+						//coiv.setVisibility(View.VISIBLE);
 						cmtv.setVisibility(View.INVISIBLE);
 						break;
 					case 0x01: // Charging
@@ -633,32 +682,53 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 					case 0x0f: // Heating
 						// Slider on the right, message blank
 						bar.setProgress(0);
-						tvl.setText(String.format(
+						sw.setChecked(true);
+						tvf.setText(String.format(
 								getText(R.string.state_charging).toString(),
 								pCarData.car_charge_linevoltage,
 								pCarData.car_charge_current));
-						tvr.setText("");
+						//tvr.setText("");
 						cmtv.setText(String.format("%s %s", pCarData.car_charge_mode,
 								pCarData.car_charge_currentlimit).toUpperCase());
-						coiv.setVisibility(View.VISIBLE);
+						//coiv.setVisibility(View.VISIBLE);
 						cmtv.setVisibility(View.VISIBLE);
 						break;
 					default:
 						// Slider on the right, message blank
 						bar.setProgress(100);
-						tvl.setText(null);
-						tvr.setText(null);
+						sw.setChecked(false);
+						tvf.setText(null);
 						cmtv.setVisibility(View.INVISIBLE);
 						coiv.setVisibility(View.INVISIBLE);
+						findViewById(R.id.tabInfoImageCharger_active).setVisibility(View.VISIBLE);
 						break;
 				}
 			}
 		}
+		//ProgressBar is only maintained for Downwards Compatibility for API<14
+		if (Build.VERSION.SDK_INT> Build.VERSION_CODES.HONEYCOMB_MR2)
+			bar.setVisibility(View.GONE);
 
 		tv = (TextView) findViewById(R.id.tabInfoTextIdealRange);
 		tv.setText(pCarData.car_range_ideal);
 		tv = (TextView) findViewById(R.id.tabInfoTextEstimatedRange);
 		tv.setText(pCarData.car_range_estimated);
+		if (pCarData.car_soc_raw==100)
+			tv.setVisibility(View.GONE);
+		else
+			tv.setVisibility(View.VISIBLE);
+
+		tv = (TextView) findViewById(R.id.tabInfoTextEstimatedRangeFull);
+		tv.setText(pCarData.car_range_estimated_raw*100/pCarData.car_soc_raw+pCarData.car_distance_units);
+		tv = (TextView) findViewById(R.id.tabInfoEstimatedRange);
+		if (pCarData.car_soc_raw==100)
+			tv.setVisibility(View.GONE);
+		else {
+			tv.setVisibility(View.VISIBLE);
+			tv.setText(getString(R.string.range_estimated) + "(" + pCarData.car_soc + ")");
+		}
+		tv = (TextView) findViewById(R.id.tabInfoEstimatedRangeFull);
+		tv.setText(getString(R.string.range_estimated)+"(100%)");
 
 		int maxWeight = findViewById(R.id.tabInfoTextSOC).getLayoutParams().width;
 		int realWeight = Math
@@ -675,6 +745,15 @@ public class InfoFragment extends BaseFragment implements OnClickListener,
 		iv = (ImageView) findViewById(R.id.tabInfoImageCar);
 		iv.setImageResource(Ui.getDrawableIdentifier(getActivity(),
 				pCarData.sel_vehicle_image));
+
+		if (pCarData.car_speed_raw>0) {
+					tvt.setText(String.format(getText(R.string.current_trip).toString(),pCarData.car_tripmeter));
+					tvt.setVisibility(View.VISIBLE);
+					tvf.setVisibility(View.INVISIBLE);
+					sw.setVisibility(View.INVISIBLE);
+				}
+			else
+				tvt.setVisibility(View.INVISIBLE);
 	}
 
 }

@@ -198,7 +198,7 @@ public class SettingsFragment extends BaseFragment implements
 				btnControl.setVisibility(View.VISIBLE);
 				iv.setVisibility(View.VISIBLE);
 				iv.setImageResource(Ui.getDrawableIdentifier(
-						parent.getContext(), "signal_strength_"
+						parent.getContext(), "ic_signal_"
 								+ it.car_gsm_bars));
 			} else {
 				convertView.setBackgroundColor(0);

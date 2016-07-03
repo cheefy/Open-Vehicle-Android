@@ -135,13 +135,13 @@ public class PowerFragment
 
 		tripChart = chart = (LineChart) rootView.findViewById(R.id.chart_trip);
 		chart.setDescription(getString(R.string.power_trip_description));
-		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.LTGRAY);
+		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.DKGRAY);
 		chart.setDrawGridBackground(false);
 		chart.setDrawBorders(true);
 		chart.setHighlightPerTapEnabled(false);
 
 		xAxis = chart.getXAxis();
-		xAxis.setTextColor(Color.WHITE);
+		xAxis.setTextColor(Color.BLACK);
 
 		yAxis = chart.getAxisLeft(); // altitude
 		yAxis.setTextColor(COLOR_ALTITUDE);
@@ -161,22 +161,22 @@ public class PowerFragment
 
 		powerChart = chart = (LineChart) rootView.findViewById(R.id.chart_power);
 		chart.setDescription(getString(R.string.power_power_description));
-		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.LTGRAY);
+		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.DKGRAY);
 		chart.setDrawGridBackground(false);
 		chart.setDrawBorders(true);
 		chart.setHighlightPerTapEnabled(false);
 
 		xAxis = chart.getXAxis();
-		xAxis.setTextColor(Color.WHITE);
+		xAxis.setTextColor(Color.BLACK);
 
 		yAxis = chart.getAxisLeft();
-		yAxis.setTextColor(Color.WHITE);
-		yAxis.setGridColor(Color.LTGRAY);
+		yAxis.setTextColor(Color.BLACK);
+		yAxis.setGridColor(Color.DKGRAY);
 		yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
 		yAxis = chart.getAxisRight();
-		yAxis.setTextColor(Color.WHITE);
-		yAxis.setGridColor(Color.LTGRAY);
+		yAxis.setTextColor(Color.BLACK);
+		yAxis.setGridColor(Color.DKGRAY);
 		yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
 
@@ -186,22 +186,22 @@ public class PowerFragment
 
 		energyChart = chart = (LineChart) rootView.findViewById(R.id.chart_energy);
 		chart.setDescription(getString(R.string.power_energy_description));
-		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.LTGRAY);
+		chart.getPaint(LineChart.PAINT_DESCRIPTION).setColor(Color.DKGRAY);
 		chart.setDrawGridBackground(false);
 		chart.setDrawBorders(true);
 		chart.setHighlightPerTapEnabled(false);
 
 		xAxis = chart.getXAxis();
-		xAxis.setTextColor(Color.WHITE);
+		xAxis.setTextColor(Color.BLACK);
 
 		yAxis = chart.getAxisLeft();
-		yAxis.setTextColor(Color.WHITE);
-		yAxis.setGridColor(Color.LTGRAY);
+		yAxis.setTextColor(Color.BLACK);
+		yAxis.setGridColor(Color.DKGRAY);
 		yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
 		yAxis = chart.getAxisRight();
-		yAxis.setTextColor(Color.WHITE);
-		yAxis.setGridColor(Color.LTGRAY);
+		yAxis.setTextColor(Color.BLACK);
+		yAxis.setGridColor(Color.DKGRAY);
 		yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
 
 
@@ -604,7 +604,7 @@ public class PowerFragment
 					LimitLine l = new LimitLine(xIndex);
 					l.setLabel(String.format("%.0f", entry.getOdometer(units)));
 					l.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-					l.setTextColor(Color.WHITE);
+					l.setTextColor(Color.BLACK);
 					l.setTextStyle(Paint.Style.FILL);
 					l.enableDashedLine(3f, 2f, 0f);
 					xSections.add(l);
@@ -652,7 +652,7 @@ public class PowerFragment
 
 		LineData data;
 		data = new LineData(xValues, dataSets);
-		data.setValueTextColor(Color.WHITE);
+		data.setValueTextColor(Color.BLACK);
 		data.setValueTextSize(9f);
 
 		tripChart.setData(data);
@@ -663,7 +663,7 @@ public class PowerFragment
 			xAxis.addLimitLine(xSections.get(i));
 		}
 
-		tripChart.getLegend().setTextColor(Color.WHITE);
+		tripChart.getLegend().setTextColor(Color.BLACK);
 
 		tripChart.invalidate();
 
@@ -742,7 +742,7 @@ public class PowerFragment
 			// display data sets:
 
 			data = new LineData(xValues, dataSets);
-			data.setValueTextColor(Color.WHITE);
+			data.setValueTextColor(Color.BLACK);
 			data.setValueTextSize(9f);
 
 			powerChart.setData(data);
@@ -753,7 +753,7 @@ public class PowerFragment
 				xAxis.addLimitLine(xSections.get(i));
 			}
 
-			powerChart.getLegend().setTextColor(Color.WHITE);
+			powerChart.getLegend().setTextColor(Color.BLACK);
 
 			powerChart.invalidate();
 
@@ -812,7 +812,7 @@ public class PowerFragment
 			// display data sets:
 
 			data = new LineData(xValues, dataSets);
-			data.setValueTextColor(Color.WHITE);
+			data.setValueTextColor(Color.BLACK);
 			data.setValueTextSize(9f);
 
 			energyChart.setData(data);
@@ -823,7 +823,7 @@ public class PowerFragment
 				xAxis.addLimitLine(xSections.get(i));
 			}
 
-			energyChart.getLegend().setTextColor(Color.WHITE);
+			energyChart.getLegend().setTextColor(Color.BLACK);
 
 			energyChart.invalidate();
 
